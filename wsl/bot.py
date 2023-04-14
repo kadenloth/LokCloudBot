@@ -1,48 +1,81 @@
-from bot_server.utils import *
-from bot_server.screenshot import Screenshot
-from bot_server.client import Kingdom, Land
-from bot_server.mouse import Mouse
-import socket
+import cv2
+import matplotlib.pyplot as plt
+import mss
+import pyautogui
+import numpy as np
 import struct
+import pickle
+import socket
 
-TEST = True
-ACCOUNT = 1
-CONFIG = {'google_login': True, 'bot_options': {'gather':False, 'monsters': True, 'gather_crystal': True, 'use_spell': True, 'gather_min_level': 1, 'monster_max_level': 1}}
-class Bot:
-    def __init__(self):
-        #self.kingdom = Kingdom(ACCOUNT, CONFIG)
-        self.land = Land(ACCOUNT, CONFIG)
+WIDTH, HEIGHT = tuple(pyautogui.size())
+class Screenshot:
+    screen = None
 
-
-if __name__ == '__main__':
-    print('Starting bot')
-
-    def search_diamonds():
-        for direction in b.land._random_walk(150):
-            t = time.time()
-            mine_coords = b.land._get_mines_on_screen()
-            if time.time() - t > 3:
-                print('Taking more than 3s to scan mines')
-            if any(el[0] == 'crystal' for el in mine_coords):
-                print('Found crystal mine')
-                break
-            print(mine_coords)
-            go_direction = eval(f'Mouse.go_{direction}')
-            go_direction()
-            go_direction()
-
-    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+    @classmethod
+    def refresh(cls):
         try:
-            s.bind(('', 9999))
-            s.listen()
-            conn, addr = s.accept()
-            print(f'Connected to {conn} {addr}')
-            Screenshot.conn = conn
-            Mouse.conn = conn
-        except ConnectionResetError:
-            pass
+            with mss.mss() as sct:
+                monitor = {'top': 0, 'left': 0, 'width': WIDTH, 'height': HEIGHT}
+                im = np.asarray(sct.grab(monitor))
+                cls.screen = cv2.cvtColor(im, cv2.COLOR_BGRA2BGR)
+        except mss.exception.ScreenShotError as e:
+            print('Error: Failed to capture screenshot')
+            print('message:', e)
+        return cls.screen
 
-        b = Bot()
-        search_diamonds()
+def send_payload(conn, l):
+    data_str = pickle.dumps(l)
+    conn.sendall(struct.pack('>I', len(data_str)) + data_str)
 
+def receive_exact(conn, length):
+    buffer = b''
+    while len(buffer) < length:
+        data = conn.recv(length - len(buffer))
+        if not data:
+            raise Exception("Connection lost")
+        buffer += data
+    return buffer
+
+def receive_payload(conn):
+    length = receive_exact(conn, 4)
+    body_size = struct.unpack(">I", length)[0]
+    body = receive_exact(conn, body_size)
+    return pickle.loads(body)
+
+class Bot:
+    def run(self):
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+            #s.connect(('95.216.11.230', 9999))
+            s.connect(('localhost', 9999))
+            while True:
+                try:
+                    print('Receive payload')
+                    cmd = receive_payload(s)
+                    print('Data received from client:')
+                    print(cmd)
+                    if cmd == 'screenshot':
+                        screen = Screenshot.refresh()
+                        send_payload(s, screen)
+                    elif cmd == 'mouseDown':
+                        print(f'Mouse down')
+                        pyautogui.mouseDown()
+                    elif cmd == 'mouseUp':
+                        print(f'Mouse up')
+                        pyautogui.mouseUp()
+                    elif cmd == 'click':
+                        print(f'click')
+                        pyautogui.click()
+                    elif isinstance(cmd, list):
+                        if cmd[0] == 'moveTo':
+                            print(f'Move coord {cmd[1]} {cmd[2]} {cmd[3]} {cmd[4]}')
+                            pyautogui.moveTo(cmd[1], cmd[2], *cmd[3], **cmd[4])
+                    else:
+                        exit()
+                except Exception as e:
+                    print('Exception', e)
+                    print('Break')
+                    break
+
+s = Bot()
+s.run()
 
