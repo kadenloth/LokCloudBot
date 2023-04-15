@@ -1,5 +1,7 @@
 #!/bin/bash
  
+cd
+
 echo "Install dependencies"
 sudo add-apt-repository ppa:mozillateam/ppa
 sudo apt update
