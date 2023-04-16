@@ -14,9 +14,9 @@ Reboot is needed to complete the installation. After you reboot, it will show th
 It will ask you to create a new username and password. You can select any username and password, but make sure you remember the password.
 
 ## Opening WSL terminal in the user directory
-You can open WSL via powershell by typing `wsl` or via start menu. After you start WSL you should see your username and PC name in green (e.g. `myuser@DESKTOP:~$`). 
+You can open WSL via powershell by typing `wsl` or via start menu. If you have other WSL distros, start by running `wsl -d Ubuntu`. 
 
-Always make sure you are in the home directory (`~`). If it shows the `/mnt/wsl/...` path after your username and PC name, run `cd` to go to the home directory.
+After you start WSL you should see your username and PC name in green (e.g. `myuser@DESKTOP:~$`). Make sure you are in the home directory (`~`). If it shows the `myuser@DESKTO:/mnt/wsl/...` or other path, run `cd` to go to the home directory. You can also start using `wsl --cd ~`
 
 ## Install bot and dependencies
 
