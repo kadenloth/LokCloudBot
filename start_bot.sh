@@ -11,6 +11,4 @@ DISPLAY_NUM=$(ls -tr1 profiles/ | nl | awk -v profile="$PROFILE" '{if ($2 == pro
 export DISPLAY=:$DISPLAY_NUM
 set -e
 
-cd /home/klox/Programas/Projects/league_of_kingdoms/standalone_dev/
-source other_env/bin/activate
-python3 bot_min/main.py $@
+./main.bin $@

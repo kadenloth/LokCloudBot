@@ -1,5 +1,5 @@
 {
-	"profile":"user1",
+	"profile":"default",
 	"token":"<USER_TOKEN>",
 
 	"auto_reconnect":true, 
