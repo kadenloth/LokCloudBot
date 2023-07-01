@@ -29,7 +29,7 @@ Run the following commands to install required packages:
 
 ```
 sudo apt update
-sudo apt install xserver-xephyr openbox git
+sudo apt install firefox-esr xserver-xephyr openbox git
 ```
 
 ## Clone this git repository
