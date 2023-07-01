@@ -27,6 +27,8 @@ The bot runs natively on the Debian/Linux OS. If you use Windows, always follow 
 ## Install required packages
 Run the following commands to install required packages:
 
+TIP: To paste on shell, just right click.
+
 ```
 sudo apt update
 sudo apt install firefox-esr xserver-xephyr openbox git xdotool tesseract-ocr
@@ -87,6 +89,8 @@ This is to fix https://github.com/microsoft/WSL/issues/9303
 
 You can create multiple config files for the same or multiple accounts. Just copy the `config_example.json` and edit the profile name and options. The command to copy is `cp configs/config_example.json configs/<name_of_config>.json`. To help you edit the configuration, here is an explanation of every field in the bot config json file.
 
+TIP: To edit on Linux command line, run `nano config/config_example.json` to edit, make the changes, then press `ctrl + o` to save and `ctrl + x` to exit.
+
 ```
 "profile":"default", # name of profile to be used in the logs
 "token":"<USER_TOKEN>", # your token
@@ -124,7 +128,7 @@ You can create multiple config files for the same or multiple accounts. Just cop
 # (Optional) Setup for multiple accounts
 If you want to run multiple accounts, you need to use different browser profiles. In the `profiles/` folder inside the git directory, there is a default profile. To create another profile, just copy the default profile. The command to copy is shown below.
 
-Tip: You can name profiles after the accounts that will run on them.
+TIP: You can name profiles after the accounts that will run on them.
 
 ```
 cp -r profiles/default profiles/my_account_1
