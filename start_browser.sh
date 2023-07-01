@@ -25,4 +25,4 @@ set -e
 
 openbox &
 #firefox --no-remote --setDefaultBrowser --kiosk https://play.leagueofkingdoms.com/
-firefox --no-remote -profile profiles/$PROFILE https://play.leagueofkingdoms.com/
+nohup firefox --no-remote -profile profiles/$PROFILE https://play.leagueofkingdoms.com/ 2>&1 > firefox.log &
