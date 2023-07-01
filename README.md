@@ -56,7 +56,7 @@ To start the game, run the following command:
 ./start_browser.sh default
 ```
 
-This will open an isolated firefox window using the default profile stored in `profiles/default`.
+This will open an isolated Firefox window using the default profile stored in `profiles/default`.
 
 ## Add the token to your config 
 To run the bot, you need a valid user token. The token can be obtained in https://lok.cloudbot.site/standalone.
@@ -67,6 +67,21 @@ Once with the token, edit the `configs/config_example.json` file. You can also e
 To run the bot, simply select the profile and the config. If you are using the `default` profile and the `configs_example.json` config, run the following command:
 
 `./start_bot.sh default configs/config_example.json`
+
+## (Windows-only) Fix WSL display issue 
+If you get the following error trying to start the bot:
+```
+Xlib.error.DisplayConnectionError: Can't connect to display ":1": [Errno 111] Connection refused
+```
+, then you will need to run the following command every time you reboot WSL.
+
+```
+./fix_display.sh
+sudo mount -o remount,rw /tmp/.X11-unix
+sudo chmod 1777 /tmp/.X11-unix
+```
+
+This is to fix https://github.com/microsoft/WSL/issues/9303
 
 # Bot Configuration
 
