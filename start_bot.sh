@@ -6,7 +6,7 @@ if [ $# -lt 1 ]; then
 fi
 
 PROFILE=$1
-DISPLAY_NUM=$(ls -tr1 profiles/ | nl | awk -v profile="$PROFILE" '{if ($2 == profile) print $1}')
+DISPLAY_NUM=$(ls -1 profiles/ | nl | awk -v profile="$PROFILE" '{if ($2 == profile) print $1}')
 
 export DISPLAY=:$DISPLAY_NUM
 set -e
