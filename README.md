@@ -83,8 +83,6 @@ Xlib.error.DisplayConnectionError: Can't connect to display ":1": [Errno 111] Co
 
 ```
 ./fix_display.sh
-sudo mount -o remount,rw /tmp/.X11-unix
-sudo chmod 1777 /tmp/.X11-unix
 ```
 
 This is to fix https://github.com/microsoft/WSL/issues/9303
