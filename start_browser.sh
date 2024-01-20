@@ -7,7 +7,7 @@ fi
 
 PROFILE=$1
 DISPLAY_NUM=$(ls -1 profiles/ | nl | awk -v profile="$PROFILE" '{if ($2 == profile) print $1}')
-SCREEN_SIZE='1356x785'
+SCREEN_SIZE='1356x787'
 if pgrep -fa "Xephyr :$DISPLAY_NUM" > /dev/null 
 then
 	echo "Display $DISPLAY_NUM already started"
@@ -24,5 +24,6 @@ export DISPLAY=:$DISPLAY_NUM
 set -e
 
 openbox &
+sleep 1
 #firefox --no-remote --setDefaultBrowser --kiosk https://play.leagueofkingdoms.com/
 nohup firefox --no-remote -profile profiles/$PROFILE https://play.leagueofkingdoms.com/ 2>&1 > firefox.log &

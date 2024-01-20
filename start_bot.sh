@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ $# -lt 1 ]; then
-	echo 'Usage: ./start_bot.sh <profile> -c <config_path>'
+	echo 'Usage: ./start_bot.sh <profile> --config_path <config_path> [-n <repeat_times>]'
 	exit 1
 fi
 

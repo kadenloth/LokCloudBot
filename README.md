@@ -68,11 +68,11 @@ Once with the token, edit the `configs/config_example.json` file. You can also e
 ## Run the bot
 To run the bot, simply select the profile and the config. If you are using the `default` profile and the `configs_example.json` config, run the following command:
 
-`./start_bot.sh default configs/config_example.json` 
+`./start_bot.sh default --config_path configs/config_example.json` 
 
 To make the bot wait and repeat multiple times, you can pass the `-n <repeat_times>` parameter.
 
-`./start_bot.sh default configs/config_example.json -n 10` 
+`./start_bot.sh default --config_path configs/config_example.json -n 10` 
 
 ## (Windows-only) Fix WSL display issue 
 If you get the following error trying to start the bot:
@@ -138,5 +138,5 @@ cp -r profiles/default profiles/my_account_1
 
 To select which profile you want to start, replace `default` with your profile name. This allows you to run multiple accounts at the same time. Use the same profile for the bot, so that it connects to the correct client window.
 
-Example: `./start_browser.sh my_account_1` and `./start_bot.sh my_account_1 -c <config file>`
+Example: `./start_browser.sh my_account_1` and `./start_bot.sh my_account_1 --config_path <config file>`
 
