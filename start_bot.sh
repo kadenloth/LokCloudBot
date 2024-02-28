@@ -11,4 +11,5 @@ DISPLAY_NUM=$(ls -1 profiles/ | nl | awk -v profile="$PROFILE" '{if ($2 == profi
 export DISPLAY=:$DISPLAY_NUM
 set -e
 
+echo "Starting bot in display $DISPLAY_NUM"
 ./main.bin $@
