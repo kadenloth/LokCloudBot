@@ -85,7 +85,28 @@ Xlib.error.DisplayConnectionError: Can't connect to display ":1": [Errno 111] Co
 ./fix_display.sh
 ```
 
-This is to fix https://github.com/microsoft/WSL/issues/9303
+This is to fix a known issue in WSL, see https://github.com/microsoft/WSL/issues/9303
+
+## Other common issues
+### Firefox does not start
+If you get the following error when you start browser:
+```
+Xephyr cannot open host display. Is DISPLAY set?
+```
+A few things you might try:
+
+* Run `openbox` and see if you get similar issue, or command not found issue.
+* Reinstall `openbox` using `sudo apt install openbox`
+* Reboot host PC and try to install bot and dependencies again.
+
+### Firefox opens, but image is scrambled
+A reboot should fix this. See more info https://askubuntu.com/questions/1494619/wsl2-graphical-application-display-issue
+
+### Other issues
+If you are using Ubuntu or other Linux distros, package names might be different and bot is not guaranteed to work.
+
+### Need help?
+If you still have issues and need help, try the `#support` chat in Discord.
 
 # Bot Configuration
 
