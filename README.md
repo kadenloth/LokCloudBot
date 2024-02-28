@@ -14,14 +14,14 @@ It will ask you to create a new username and password. You can select any userna
 
 ## Opening WSL
 You need to first open WSL via powershell by typing `wsl` or via start menu. If you have other WSL distros, start by running `wsl -d Debian`. 
-This is required so that the bot runs in an isolated matchine and doesn't interfere with your normal usage (e.g. move mouse, click, drag).
-After you start WSL you should see a terminal with your username and PC name in green (e.g. `myuser@DESKTOP:~$`). 
+This is required so that the bot runs in an isolated machine and doesn't interfere with your normal usage (e.g. move mouse, click, drag).
+
+After you start WSL, you should see a terminal with your username and PC name in green (e.g. `myuser@DESKTOP:~$`). 
 
 ## Install bot and dependencies
 Now, in your terminal, follow the instructions below for the Debian installation.
 
 # Installation on Debian
-
 The bot runs natively on the Debian/Linux OS. If you use Windows, always follow the instructions in your WSL Debian terminal.
 
 ## Install required packages
@@ -36,7 +36,7 @@ sudo apt install firefox-esr xserver-xephyr openbox git xdotool tesseract-ocr
 
 ## Clone this git repository
 
-Run the following command to clone the bot directory to be able to run on your PC.
+Run the following command to clone the bot directory, to be able to run on your PC. The command will download all files in a new folder `LokCloudBot` and save in the current directory.
 ```
 git clone https://github.com/kadenloth/LokCloudBot.git
 ```
@@ -49,7 +49,7 @@ Before you run the bot, make sure you are in the git cloned repository. To do th
 cd LokCloudBot
 ```
 
-When you run `ls` to list files, you should see the `start_bot.sh` and `start_browser.sh` scripts used to run the bot.
+TIP: When you run `ls` to list files, you should see the `start_bot.sh` and `start_browser.sh`, which are the scripts used to run the bot.
 
 ## Start the game
 To start the game, run the following command:
@@ -148,7 +148,7 @@ TIP: To edit on Linux command line, run `nano config/config_example.json` to edi
 }
 ```
 
-# Advanced Setup (Optional)
+# (Optional) Advanced Setup
 ## Setup multiple accounts
 If you want to run multiple accounts, you need to use different browser profiles. In the `profiles/` folder inside the git directory, there is a default profile. To create another profile, just copy the default profile. The command to copy is shown below.
 
@@ -162,7 +162,7 @@ To select which profile you want to start, replace `default` with your profile n
 
 Example: `./start_browser.sh my_account_1` and `./start_bot.sh my_account_1 --config_path <config file>`
 
-## (Optional) Schedule or customize when to run
+## Schedule or customize when to run
 Ideally, you shouldn't keep the account logged in for many hours in a row running the bot in repeat mode. It is better to schedule the runs or add some pause between runs. Here is an example of script that will pause for 2 hours.
 
 ```
