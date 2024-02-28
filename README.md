@@ -49,7 +49,7 @@ Before you run the bot, make sure you are in the git cloned repository. To do th
 cd LokCloudBot
 ```
 
-When you run `ls`, you should see the `start_bot.sh` and `start_browser.sh` scripts used to run the bot.
+When you run `ls` to list files, you should see the `start_bot.sh` and `start_browser.sh` scripts used to run the bot.
 
 ## Start the game
 To start the game, run the following command:
@@ -115,7 +115,7 @@ You can create multiple config files for the same or multiple accounts. Just cop
 TIP: To edit on Linux command line, run `nano config/config_example.json` to edit, make the changes, then press `ctrl + o` to save and `ctrl + x` to exit.
 
 ```
-"profile":"default", # name of profile to be used in the logs
+"profile":"default", # name of profile to be used in the logs and to store timers
 "token":"<USER_TOKEN>", # your token
 
 "auto_reconnect":true, # if enabled and the game starts in the login screen, the bot will try to login
@@ -148,7 +148,8 @@ TIP: To edit on Linux command line, run `nano config/config_example.json` to edi
 }
 ```
 
-# (Optional) Setup for multiple accounts
+# Advanced Setup (Optional)
+## Setup multiple accounts
 If you want to run multiple accounts, you need to use different browser profiles. In the `profiles/` folder inside the git directory, there is a default profile. To create another profile, just copy the default profile. The command to copy is shown below.
 
 TIP: You can name profiles after the accounts that will run on them.
@@ -157,7 +158,27 @@ TIP: You can name profiles after the accounts that will run on them.
 cp -r profiles/default profiles/my_account_1
 ```
 
-To select which profile you want to start, replace `default` with your profile name. This allows you to run multiple accounts at the same time. Use the same profile for the bot, so that it connects to the correct client window.
+To select which profile you want to start, replace `default` with your profile name. This allows you to run multiple accounts at the same time. Use the same profile for the bot, so that it connects to the correct client window. 
 
 Example: `./start_browser.sh my_account_1` and `./start_bot.sh my_account_1 --config_path <config file>`
 
+## (Optional) Schedule or customize when to run
+Ideally, you shouldn't keep the account logged in for many hours in a row running the bot in repeat mode. It is better to schedule the runs or add some pause between runs. Here is an example of script that will pause for 2 hours.
+
+```
+#!/bin/bash
+
+while true # Repeat forever
+do
+    # Start browser in background
+    ./start_browser.sh <profile>
+    # Run bot
+    ./start_bot.sh <profile> --config_path <config_file>
+
+    # Kill browser after bot finishes
+    pkill -fe "leagueofkingdoms.com"
+
+    # Sleep for two hours (7200 seconds)
+    sleep 7200
+done
+```
