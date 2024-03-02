@@ -31,12 +31,12 @@ TIP: To paste on shell, just right click.
 
 ```
 sudo apt update
-sudo apt install firefox-esr xserver-xephyr openbox git xdotool tesseract-ocr
+sudo apt install firefox-esr xserver-xephyr openbox git git-lfs xdotool tesseract-ocr
 ```
 
 ## Clone this git repository
 
-Run the following command to clone the bot directory, to be able to run on your PC. The command will download all files in a new folder `LokCloudBot` and save in the current directory.
+Run the following command to clone the bot directory, to be able to run on your PC. The command will download the files in a new folder `LokCloudBot` and save in the current directory.
 ```
 git clone https://github.com/kadenloth/LokCloudBot.git
 ```
@@ -50,6 +50,14 @@ cd LokCloudBot
 ```
 
 TIP: When you run `ls` to list files, you should see the `start_bot.sh` and `start_browser.sh`, which are the scripts used to run the bot.
+
+## Download/Update bot files
+
+Run the following command to download the bot binary files. The same command can be used to update.
+
+```
+git-lfs pull
+```
 
 ## Start the game
 To start the game, run the following command:
