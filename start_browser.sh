@@ -7,7 +7,7 @@ fi
 
 PROFILE=$1
 DISPLAY_NUM=$(ls -1 profiles/ | nl | awk -v profile="$PROFILE" '{if ($2 == profile) print $1}')
-SCREEN_SIZE='1354x687'
+SCREEN_SIZE='1356x687'
 if pgrep -fa "Xephyr :$DISPLAY_NUM" > /dev/null 
 then
 	echo "Display $DISPLAY_NUM already started"
