@@ -51,12 +51,12 @@ cd LokCloudBot
 
 TIP: When you run `ls` to list files, you should see the `start_bot.sh` and `start_browser.sh`, which are the scripts used to run the bot.
 
-## Download/Update bot files
+## Update bot files
 
-Run the following command to download the bot binary files. The same command can be used to update.
+Run the following command to update repository. 
 
 ```
-git-lfs pull
+git pull
 ```
 
 ## Start the game
