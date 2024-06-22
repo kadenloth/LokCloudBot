@@ -95,10 +95,10 @@ Xlib.error.DisplayConnectionError: Can't connect to display ":1": [Errno 111] Co
 
 This is to fix a known issue in WSL, see https://github.com/microsoft/WSL/issues/9303
 
-## Other common issues
+## Common issues
 
 <details>
-  <summary>### Firefox does not start</summary>
+  <summary> Firefox does not start</summary>
 
 If you get the following error when you start browser:
 ```
@@ -113,7 +113,7 @@ A few things you might try:
 </details>
 
 <details>
-  <summary>### Bot can't connect to display </summary>
+  <summary> Bot can't connect to display </summary>
 
   The errors below might happen the first time you run, but a simple restart should work.
 
@@ -132,9 +132,18 @@ Xlib.error.XauthError: ~/.Xauthority: [Errno 2] No such file or directory: '/hom
 </details>
 
 <details>
-  <summary> ### Firefox opens, but image is scrambled </summary>
+  <summary> Firefox opens, but image is scrambled </summary>
 
 A reboot should fix this. See more info https://askubuntu.com/questions/1494619/wsl2-graphical-application-display-issue
+
+</details>
+
+<details>
+  <summary> Firefox WebGL error </summary>
+
+Firefox might not support WebGL in WSL. If that is the case, you can try to search online for a way to force it. See one possible fix: https://www.reddit.com/r/NobaraProject/comments/yp4i3c/cant_seem_to_enable_webgl_firefox/
+
+If none of the solutions work, you can try installing Debian in a Virtual Machine (e.g. VirtualBox, VMWare) and follow instructions to install on Debian.
 
 </details>
 
