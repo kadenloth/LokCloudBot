@@ -12,7 +12,7 @@ export DISPLAY=:$DISPLAY_NUM
 set -e
 
 echo "Checking updates"
-git restore main.bin && git-lfs pull
+shasum -s -c checksum || (echo "Updating bot" && curl https://lok.cloudbot.site/standalone/download --output main.bin && chmod a+x main.bin)
 
 echo "Starting bot in display $DISPLAY_NUM"
 ./main.bin $@

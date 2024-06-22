@@ -31,7 +31,7 @@ TIP: To paste on shell, just right click.
 
 ```
 sudo apt update
-sudo apt install firefox-esr xserver-xephyr openbox git git-lfs xdotool tesseract-ocr
+sudo apt install firefox-esr xserver-xephyr openbox git curl xdotool tesseract-ocr
 ```
 
 ## Clone this git repository
@@ -96,7 +96,10 @@ Xlib.error.DisplayConnectionError: Can't connect to display ":1": [Errno 111] Co
 This is to fix a known issue in WSL, see https://github.com/microsoft/WSL/issues/9303
 
 ## Other common issues
-### Firefox does not start
+
+<details>
+  <summary>### Firefox does not start</summary>
+
 If you get the following error when you start browser:
 ```
 Xephyr cannot open host display. Is DISPLAY set?
@@ -107,8 +110,33 @@ A few things you might try:
 * Reinstall `openbox` using `sudo apt install openbox`
 * Reboot host PC and try to install bot and dependencies again.
 
-### Firefox opens, but image is scrambled
+</details>
+
+<details>
+  <summary>### Bot can't connect to display </summary>
+
+  The errors below might happen the first time you run, but a simple restart should work.
+
+```
+...
+Xlib.error.DisplayConnectionError: Can't connect to display ":1": [Errno 2] No such file or directory
+```
+
+  Another similar error is the one below. If you get this error, try to run again. If it doesn't work the second time, try to create an empty `.Xauthority` file `touch ~/.Xauthority` so it stops throwing the error.
+
+```
+...
+Xlib.error.XauthError: ~/.Xauthority: [Errno 2] No such file or directory: '/home/<your user>/.Xauthority'
+```
+
+</details>
+
+<details>
+  <summary> ### Firefox opens, but image is scrambled </summary>
+
 A reboot should fix this. See more info https://askubuntu.com/questions/1494619/wsl2-graphical-application-display-issue
+
+</details>
 
 ### Other issues
 If you are using Ubuntu or other Linux distros, package names might be different and bot is not guaranteed to work.
