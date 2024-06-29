@@ -3,3 +3,4 @@ profiles/*
 configs/*
 !configs/config_example.json
 *.log
+main.bin
