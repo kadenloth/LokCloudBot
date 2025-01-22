@@ -1,6 +1,6 @@
 {
 	"profile": "default",
-	"chrome_profile_path":"	C:/Users/<your-user>/AppData/Local/Google/Chrome/User Data/Default",
+	"chrome_profile_path":"C:/Users/<your-user>/AppData/Local/Google/Chrome/User Data/Default",
 	"token":"<your-token-here>",
 
 	"bot_options":{
