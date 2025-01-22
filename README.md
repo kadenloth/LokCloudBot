@@ -1,229 +1,41 @@
-# Installation on Windows
+# Standalone v2 for Windows
 
-## Install Debian on Windows (WSL2)
+The new version should run on Windows without any complicated setup.
 
-Click start menu and search for `powershell`
+## Download and setup
 
-Open powershell and type `wsl --install -d Debian` to install.
+Download the bot `main.exe` file from https://lok.cloudbot.site/standalone-v2/download
 
-If you need help, follow the official Microsoft documentation here https://learn.microsoft.com/en-us/windows/wsl/install
+Download or save the `config.json` in this repository to a file. 
 
-### Reboot your PC
-Reboot is needed to complete the installation. After you reboot, it will show the WSL window with the instalation. Wait for it to complete.
-It will ask you to create a new username and password. You can select any username and password, but make sure you remember the password.
+Edit the following fields in the `config.json`:
 
-## Opening WSL
-You need to first open WSL via powershell by typing `wsl` or via start menu. If you have other WSL distros, start by running `wsl -d Debian`. 
-This is required so that the bot runs in an isolated machine and doesn't interfere with your normal usage (e.g. move mouse, click, drag).
+* `profile`: The name of this bot profile. The name can be anything, but it should be unique per Lok Account. You can put any name to identify your kingdom or account".
+* `chrome_profile_path`: The path to your Chrome profile. For using multiple
+  accounts you will have to create different Chrome profiles. You should login
+in this profile before starting the bot
 
-After you start WSL, you should see a terminal with your username and PC name in green (e.g. `myuser@DESKTOP:~$`). 
+[!TIP] To find the profile path, start Chrome in the profile and paste
+`chrome://version` in the url bar. The path of the profile will be shown after "Profile Path:"
 
-## Install bot and dependencies
-Now, in your terminal, follow the instructions below for the Debian installation.
+* `token`: The token is your "User Token" that you see in
+  https://lok.cloudbot.site/standalone. You get a free
+token when you create an account. You can also purchase "rounds" that you can convert to add more subscription time.
 
-# Installation on Debian
-The bot runs natively on the Debian/Linux OS. If you use Windows, always follow the instructions in your WSL Debian terminal.
+## Running the bot
+Once you have configured everything correctly, you can start the bot.
 
-## Install required packages
-Run the following commands to install required packages:
+To run, open Windows Power Shell in the bot folder, and run:
 
-TIP: To paste on shell, just right click.
+`main.exe config.json` or `main.exe <path your config.json>`
 
-```
-sudo apt update
-sudo apt install firefox-esr xserver-xephyr openbox git curl xdotool tesseract-ocr
-```
+You can also run it with the `-n` flag to repeat.
 
-## Clone this git repository
+`main.exe config.json -n 10`
+ 
+## Dependencies 
 
-Run the following command to clone the bot directory, to be able to run on your PC. The command will download the files in a new folder `LokCloudBot` and save in the current directory.
-```
-git clone https://github.com/kadenloth/LokCloudBot.git
-```
+* Chrome - You need Chrome installed to run the game
+* Tesseract - Install Tesseract if you get error saying it is not installed.  [Link tesseract](https://github.com/tesseract-ocr/tesseract/releases/download/5.5.0/tesseract-ocr-w64-setup-5.5.0.20241111.exe).
+[!Important] Make sure it is installed in `C:/Program Files/Tesseract-OCR/` for it to work.
 
-# Running the bot
-
-## Select the bot directory
-Before you run the bot, make sure you are in the git cloned repository. To do that, just `cd` into the git directory.
-```
-cd LokCloudBot
-```
-
-TIP: When you run `ls` to list files, you should see the `start_bot.sh` and `start_browser.sh`, which are the scripts used to run the bot.
-
-## Update bot files
-
-Run the following command to update repository. 
-
-```
-git pull
-```
-
-## Start the game
-To start the game, run the following command:
-
-```
-./start_browser.sh default
-```
-
-This will open an isolated Firefox window using the default profile stored in `profiles/default`.
-
-## Add the token to your config 
-To run the bot, you need a valid user token. The token can be obtained in https://lok.cloudbot.site/standalone.
-
-Once with the token, edit the `configs/config_example.json` file. You can also edit other bot options as you like, for more info see the [Bot configuration](#bot-configuration) section.
-
-## Run the bot
-To run the bot, simply select the profile and the config. If you are using the `default` profile and the `configs_example.json` config, run the following command:
-
-`./start_bot.sh default --config_path configs/config_example.json` 
-
-To make the bot wait and repeat multiple times, you can pass the `-n <repeat_times>` parameter.
-
-`./start_bot.sh default --config_path configs/config_example.json -n 10` 
-
-## (Windows-only) Fix WSL display issue 
-If you get the following error trying to start the bot:
-```
-Xlib.error.DisplayConnectionError: Can't connect to display ":1": [Errno 111] Connection refused
-```
-, then you will need to run the following command every time you reboot WSL.
-
-```
-./fix_display.sh
-```
-
-This is to fix a known issue in WSL, see https://github.com/microsoft/WSL/issues/9303
-
-## Common issues
-
-<details>
-  <summary> Firefox does not start</summary>
-
-If you get the following error when you start browser:
-```
-Xephyr cannot open host display. Is DISPLAY set?
-```
-A few things you might try:
-
-* Run `openbox` and see if you get similar issue, or command not found issue.
-* Reinstall `openbox` using `sudo apt install openbox`
-* Reboot host PC and try to install bot and dependencies again.
-
-</details>
-
-<details>
-  <summary> Bot can't connect to display </summary>
-
-  The errors below might happen the first time you run, but a simple restart should work.
-
-```
-...
-Xlib.error.DisplayConnectionError: Can't connect to display ":1": [Errno 2] No such file or directory
-```
-
-  Another similar error is the one below. If you get this error, try to run again. If it doesn't work the second time, try to create an empty `.Xauthority` file `touch ~/.Xauthority` so it stops throwing the error.
-
-```
-...
-Xlib.error.XauthError: ~/.Xauthority: [Errno 2] No such file or directory: '/home/<your user>/.Xauthority'
-```
-
-</details>
-
-<details>
-  <summary> Firefox opens, but image is scrambled </summary>
-
-A reboot should fix this. See more info https://askubuntu.com/questions/1494619/wsl2-graphical-application-display-issue
-
-</details>
-
-<details>
-  <summary> Firefox WebGL error </summary>
-
-Firefox might not support WebGL in WSL. If that is the case, you can try to search online for a way to force it. See one possible fix: https://www.reddit.com/r/NobaraProject/comments/yp4i3c/cant_seem_to_enable_webgl_firefox/
-
-If none of the solutions work, you can try installing Debian in a Virtual Machine (e.g. VirtualBox, VMWare) and follow instructions to install on Debian.
-
-</details>
-
-### Other issues
-If you are using Ubuntu or other Linux distros, package names might be different and bot is not guaranteed to work.
-
-### Need help?
-If you still have issues and need help, try the `#support` chat in Discord.
-
-# Bot Configuration
-
-You can create multiple config files for the same or multiple accounts. Just copy the `config_example.json` and edit the profile name and options. The command to copy is `cp configs/config_example.json configs/<name_of_config>.json`. To help you edit the configuration, here is an explanation of every field in the bot config json file.
-
-TIP: To edit on Linux command line, run `nano config/config_example.json` to edit, make the changes, then press `ctrl + o` to save and `ctrl + x` to exit.
-
-```
-"profile":"default", # name of profile to be used in the logs and to store timers
-"token":"<USER_TOKEN>", # your token
-
-"auto_reconnect":true, # if enabled and the game starts in the login screen, the bot will try to login
-"google_login":false, # will try to login using Google button
-"email":"<optional email>" , # email to try to login via the email button
-"password":"<optional password>", # password to try to login via the email button
-
-"bot_options":{
-	"build":false, # will try to upgrade buildings
-	"research": false, # will try to upgrade research
-	"train":false, # will try to train the last selected troop type
-	"use_inventory": false, # will use items in inventory to meet requirements to upgrade buildings or research
-
-	"gather_food":false, # will gather food mines
-	"gather_wood":false, # will gather wood mines
-	"gather_stone":false, # will gather stone mines
-	"gather_gold":true, # will gather gold mines
-	"gather_crystal":true, # will gather crystal mines
-	"gather_min_level": 3, "gather_max_level": 8, # ignore mines outside this level range 
-	"skip_saturday":false, # will skip gathering on saturdays (possible kill-event)
-
-	"monsters":true, # will attack monsters
-	"monster_min_level":2, "monster_max_level":4, # will ignore monsters outside this level range
-
-	"rally":true, # will check for any alliance rally in progress and join
-	"use_spells":false, # will use spells "increase resource production", "instant harvest", "accelerate gathering" if available.
-	"use_boosts":false, # will use 8h boosts to increase resource production and gathering
-	"alliance_donate":true, # will try to donate to alliance if there is a recommended technology
-	"caravan_buy_resources":false # will buy resources and vip points from caravan using resources (not crystals)
-}
-```
-
-# (Optional) Advanced Setup
-## Setup multiple accounts
-If you want to run multiple accounts, you need to use different browser profiles. In the `profiles/` folder inside the git directory, there is a default profile. To create another profile, just copy the default profile. The command to copy is shown below.
-
-TIP: You can name profiles after the accounts that will run on them.
-
-```
-cp -r profiles/default profiles/my_account_1
-```
-
-To select which profile you want to start, replace `default` with your profile name. This allows you to run multiple accounts at the same time. Use the same profile for the bot, so that it connects to the correct client window. 
-
-Example: `./start_browser.sh my_account_1` and `./start_bot.sh my_account_1 --config_path <config file>`
-
-## Schedule or customize when to run
-Ideally, you shouldn't keep the account logged in for many hours in a row running the bot in repeat mode. It is better to schedule the runs or add some pause between runs. Here is an example of script that will pause for 2 hours.
-
-```
-#!/bin/bash
-
-while true # Repeat forever
-do
-    # Start browser in background
-    ./start_browser.sh <profile>
-    # Run bot
-    ./start_bot.sh <profile> --config_path <config_file>
-
-    # Kill browser after bot finishes
-    pkill -fe "leagueofkingdoms.com"
-
-    # Sleep for two hours (7200 seconds)
-    sleep 7200
-done
-```

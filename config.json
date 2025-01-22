@@ -1,0 +1,29 @@
+{
+	"profile": "default",
+	"chrome_profile_path":"	C:/Users/<your-user>/AppData/Local/Google/Chrome/User Data/Default",
+	"token":"<your-token-here>",
+
+	"bot_options":{
+		"build":false, 
+		"research":false, 
+		"train":false, 
+		"use_inventory":false,
+
+		"gather_food":false, 
+		"gather_wood":false, 
+		"gather_stone":false, 
+		"gather_gold":true, 
+		"gather_crystal":true, 
+		"gather_min_level": 2, "gather_max_level": 8, 
+		"skip_saturday":false,
+
+		"monsters":false,
+		"monster_min_level":2, "monster_max_level":4,
+
+		"rally":true,
+		"use_spells":true,
+		"use_boosts":false,
+		"alliance_donate":true,
+		"caravan_buy_resources":false
+	}
+}
