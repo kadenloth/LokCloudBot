@@ -25,11 +25,15 @@ Once you have configured everything correctly, you can start the bot.
 
 To run, open Windows Power Shell in the bot folder, and run:
 
-`main.exe config.json` or `main.exe <path your config.json>`
+`./main.exe config.json` or `./main.exe <path your config.json>`
 
 You can also run it with the `-n` flag to repeat.
 
-`main.exe config.json -n 10`
+`./main.exe config.json -n 10`
+
+## (Advanced) Multiple accounts
+
+To run multiple accounts, you can simply clone your Chrome profile and create a new `config.json`.
  
 ## Dependencies 
 
