@@ -6,6 +6,8 @@ The new version should run on Windows without any complicated setup.
 
 Download the bot `main.exe` file from https://lok.cloudbot.site/standalone-v2/download
 
+Newest version: v2.0.1
+
 Download or save the `config.json` in this repository to a file. 
 
 Edit the following fields in the `config.json` using a text editor:
@@ -34,11 +36,11 @@ You can also run it with the `-n` flag to repeat.
 ## (Advanced) Multiple accounts
 
 To run multiple accounts, you can simply clone your Chrome profile and create a new `config.json`.
- 
+
 ## Dependencies 
 
 * Chrome - You need Chrome installed to run the game
-* Tesseract - Install Tesseract if you get error saying it is not installed.  [Link tesseract](https://github.com/tesseract-ocr/tesseract/releases/download/5.5.0/tesseract-ocr-w64-setup-5.5.0.20241111.exe).
+* Tesseract - Install Tesseract if you get error saying it is not installed. [Link tesseract](https://github.com/tesseract-ocr/tesseract/releases/download/5.5.0/tesseract-ocr-w64-setup-5.5.0.20241111.exe).
 > [!IMPORTANT]
 > Make sure it is installed in `C:/Program Files/Tesseract-OCR/` for it to work.
 
