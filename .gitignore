@@ -3,6 +3,7 @@ profiles/*
 configs/*
 !configs/config_example.json
 *.log
+old_versions/*
 main.bin
 main.exe
 upload.sh
