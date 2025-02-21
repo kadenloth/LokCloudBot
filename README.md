@@ -6,7 +6,7 @@ The new version should run on Windows without any complicated setup.
 
 Download the bot `main.exe` file from https://lok.cloudbot.site/standalone-v2/download
 
-Newest version: v2.0.1
+Newest version: v2.0.3
 
 Download or save the `config.json` in this repository to a file. 
 
@@ -29,9 +29,12 @@ To run, open Windows Power Shell in the bot folder, and run:
 
 `./main.exe config.json` or `./main.exe <path your config.json>`
 
-You can also run it with the `-n` flag to repeat.
+You can also run it with the `-n` flag to repeat `n` times. There is also the `-w` flag to wait between runs.
 
-`./main.exe config.json -n 10`
+`./main.exe config.json -n 10 -w 120`
+
+The command above will run bot 10 times, waiting two minutes between runs.
+
 
 ## (Advanced) Multiple accounts
 

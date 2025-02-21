@@ -21,6 +21,8 @@
 		"monster_min_level":2, "monster_max_level":4,
 
 		"rally":true,
+		"repeat_rally":true, 
+
 		"use_spells":true,
 		"use_boosts":false,
 		"alliance_donate":true,
