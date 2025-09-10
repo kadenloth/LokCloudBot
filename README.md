@@ -6,7 +6,7 @@ The new version should run on Windows without any complicated setup.
 
 Download the bot `main.exe` file from https://lok.cloudbot.site/standalone-v2/download
 
-Newest version: v2.0.3
+Newest version: v2.1
 
 Download or save the `config.json` in this repository to a file. 
 
