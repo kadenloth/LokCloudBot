@@ -75,5 +75,5 @@ Each account should use a different `config.json` with different `profile` name 
 * Chrome - You need Chrome installed to run the game
 * Tesseract - Install Tesseract if you get error saying it is not installed. [Link tesseract](https://github.com/tesseract-ocr/tesseract/releases/download/5.5.0/tesseract-ocr-w64-setup-5.5.0.20241111.exe).
 > [!IMPORTANT]
-> Make sure it is installed in `C:/Program Files/Tesseract-OCR/` for it to work. If not, set the installation path in the `config.json` adding `"tesseract_path":<path>` to the .
+> Make sure it is installed in `C:/Program Files/Tesseract-OCR/` for it to work. If not, add a new key in the `config.json` to set the installation path: `"tesseract_path":<path>,`.
 
