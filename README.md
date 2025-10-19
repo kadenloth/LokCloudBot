@@ -6,7 +6,7 @@ The new version should run on Windows without any complicated setup.
 
 Download the bot `main.exe` file from https://lok.cloudbot.site/standalone-v2/download
 
-Newest version: v2.1
+Newest version: v2.2
 
 Download or save the `config.json` in this repository to a file.
 
@@ -41,23 +41,27 @@ Here are an explanation of each option you can configure in your `config.json`.
 
 ```
 "bot_options":{
-	"build":false, # will try to upgrade buildings
+	"build":true, # will try to upgrade buildings (default is true)
 	"research": false, # will try to upgrade research
 	"train":false, # will try to train the last selected troop type
 	"use_inventory": false, # will use items in inventory to meet requirements to upgrade buildings or research
+
+    "collect_resources":true, # will collect resources from farms (default is true)
+    "claim_completed_quests":true, # will collect rewards from completed quests (default is true)
 
 	"gather_food":false, # will gather food mines
 	"gather_wood":false, # will gather wood mines
 	"gather_stone":false, # will gather stone mines
 	"gather_gold":true, # will gather gold mines
 	"gather_crystal":true, # will gather crystal mines
+    "gather_from_bookmarked_coords":true, # will visit liked coordinates on the map and search for mines
 	"gather_min_level": 3, "gather_max_level": 8, # ignore mines outside this level range 
 	"skip_saturday":false, # will skip gathering on saturdays (possible kill-event)
 
 	"monsters":true, # will attack monsters
 	"monster_min_level":2, "monster_max_level":4, # will ignore monsters outside this level range
 
-	"rally":true, # will check for any alliance rally in progress and join
+	"rally":true, # will check for any alliance rally in progress and join. It will join the rally using the 4th saved tab of troop configuration.
 	"use_spells":false, # will use spells "increase resource production", "instant harvest", "accelerate gathering" if available.
 	"use_boosts":false, # will use 8h boosts to increase resource production and gathering
 	"alliance_donate":true, # will try to donate to alliance if there is a recommended technology
