@@ -9,11 +9,15 @@
 		"train":false, 
 		"use_inventory":false,
 
+    "collect_resources":true,
+    "claim_completed_quests":true,
+
 		"gather_food":false, 
 		"gather_wood":false, 
 		"gather_stone":false, 
 		"gather_gold":true, 
 		"gather_crystal":true, 
+    "gather_from_bookmarked_coords":false,
 		"gather_min_level": 2, "gather_max_level": 8, 
 		"skip_saturday":false,
 
